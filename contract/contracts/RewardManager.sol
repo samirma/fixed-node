@@ -18,6 +18,10 @@ contract RewardManager is IRewardManager, Ownable, Admin {
         nodeNFT = NodeNFT(_nodeNFT);
     }
 
+    function mint(address _owner) external {
+        nodeNFT.mint(_owner);
+    }
+
     function balanceOf(address owner) external view returns (uint256 balance) {
         return 111;
     }

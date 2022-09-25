@@ -3,6 +3,8 @@ pragma solidity ^0.8.17;
 
 interface IRewardManager {
     
+    function mint(address owner) external;
+
     function balanceOf(address owner) external view returns (uint256 balance);
 
     function balanceOfId(uint232 id) external view returns (uint256 balance);

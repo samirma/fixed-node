@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.4;
+pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./IRewardManager.sol";
+import "./Admin.sol";
 
-contract NodeNFT is ERC721Enumerable, Ownable {
+contract NodeNFT is ERC721Enumerable, Ownable, Admin {
     string _baseTokenURI;
 
     // Node details
@@ -31,9 +32,9 @@ contract NodeNFT is ERC721Enumerable, Ownable {
         _baseTokenURI = baseURI;
     }
 
-    function mint() public payable onlyWhenNotPaused {
+    function mint(address _owner) public payable onlyWhenNotPaused onlyAdmin {
         tokenIds += 1;
-        _safeMint(msg.sender, tokenIds);
+        _safeMint(_owner, tokenIds);
     }
 
     function createdAt(uint256 id) public view returns(uint) {
