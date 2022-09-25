@@ -36,6 +36,14 @@ contract NodeNFT is ERC721Enumerable, Ownable {
         _safeMint(msg.sender, tokenIds);
     }
 
+    function createdAt(uint256 id) public view returns(uint) {
+        return nodeDetails[id].createdAt;
+    }
+
+    function deducted(uint256 id) public view returns(uint) {
+        return nodeDetails[id].deducted;
+    }
+
     function _baseURI() internal view virtual override returns (string memory) {
         return _baseTokenURI;
     }

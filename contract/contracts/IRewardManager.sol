@@ -5,8 +5,10 @@ interface IRewardManager {
     
     function balanceOf(address owner) external view returns (uint256 balance);
 
-    function claimRewardByNode(address owner) external returns (uint256 balance);
-    
+    function balanceOfId(uint232 id) external view returns (uint256 balance);
+
+    function claimRewardById(uint232 id) external  returns (uint256 balance);
+
     function claimAllReward(address owner) external returns (uint256 balance);
 
 }

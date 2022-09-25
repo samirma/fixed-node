@@ -6,8 +6,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./NodeNFT.sol";
 import "./RewardToken.sol";
 import "./IRewardManager.sol";
+import "./Admin.sol";
 
-contract RewardManager is IRewardManager, Ownable {
+contract RewardManager is IRewardManager, Ownable, Admin {
 
     RewardToken rewardToken;
     NodeNFT nodeNFT;
@@ -17,13 +18,17 @@ contract RewardManager is IRewardManager, Ownable {
         nodeNFT = NodeNFT(_nodeNFT);
     }
 
-    function balanceOf(address owner) external pure returns (uint256 balance) {
-        uint createdAt = nodeNFT.createdAt(owner);
-        uint232 deducted = nodeNFT.deducted(owner);
+    function balanceOf(address owner) external view returns (uint256 balance) {
         return 111;
     }
 
-    function claimRewardByNode(address _owner) external returns (uint256 balance) {
+    function balanceOfId(uint232 id) external view returns (uint256 balance) {
+        uint createdAt = nodeNFT.createdAt(id);
+        uint256 deducted = nodeNFT.deducted(id);
+        return createdAt * deducted;
+    }
+
+    function claimRewardById(uint232 id) external  returns (uint256 balance) {
         return 0;
     }
     
